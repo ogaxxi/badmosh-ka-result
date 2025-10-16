@@ -1,218 +1,109 @@
 <!DOCTYPE html>
 <html lang="ur" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>گلاب جامن کو مبارک!</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Noto Nastaliq Urdu', serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎉 مبارک ہو، خوبصورت رانی! 🎉</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #00aaff, #004466);
+    background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
+    background-size: cover;
+    color: #fff;
+    font-family: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", sans-serif;
+    overflow-x: hidden;
+    direction: rtl;
+  }
 
-        body {
-            background: linear-gradient(to bottom, #004e92, #000428);
-            color: white;
-            overflow: hidden;
-            position: relative;
-            height: 100vh;
-        }
+  h1 {
+    text-align: center;
+    font-size: 3em;
+    margin-top: 40px;
+    text-shadow: 2px 2px 8px #000;
+  }
 
-        /* Waves */
-        .wave {
-            position: absolute;
-            bottom: 0;
-            width: 200%;
-            height: 200px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 100%;
-            animation: wave 8s linear infinite;
-        }
+  .content {
+    max-width: 800px;
+    margin: 30px auto;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 25px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+  }
 
-        .wave:nth-child(2) {
-            bottom: 20px;
-            animation-duration: 12s;
-            opacity: 0.5;
-        }
+  p {
+    font-size: 1.3em;
+    line-height: 2.2em;
+    text-align: center;
+  }
 
-        .wave:nth-child(3) {
-            bottom: 40px;
-            animation-duration: 16s;
-            opacity: 0.3;
-        }
+  .stickers {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    font-size: 3em;
+    animation: float 3s ease-in-out infinite;
+  }
 
-        @keyframes wave {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
-        }
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+  }
 
-        /* Urdu Paragraph Floating */
-        .urdu-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 1.6rem;
-            text-align: center;
-            line-height: 2;
-            width: 85%;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 25px 35px;
-            border-radius: 25px;
-            backdrop-filter: blur(6px);
-            animation: floaty 8s ease-in-out infinite;
-        }
+  /* Confetti Animation */
+  .confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    animation: fall 5s linear infinite;
+    top: -10px;
+  }
 
-        @keyframes floaty {
-            0% { transform: translate(-50%, -50%) translateY(0); }
-            50% { transform: translate(-50%, -50%) translateY(-20px); }
-            100% { transform: translate(-50%, -50%) translateY(0); }
-        }
-
-        /* Floating Bubbles */
-        .bubble {
-            position: absolute;
-            bottom: -50px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            animation: rise 10s linear infinite;
-        }
-
-        @keyframes rise {
-            0% { transform: translateY(0); opacity: 0; }
-            20% { opacity: 1; }
-            100% { transform: translateY(-110vh); opacity: 0; }
-        }
-
-        /* Floating Hearts */
-        .heart {
-            position: absolute;
-            color: pink;
-            font-size: 2rem;
-            animation: floatHeart 5s ease-in-out infinite;
-            opacity: 0.8;
-        }
-
-        @keyframes floatHeart {
-            0% { transform: translateY(0) scale(1); opacity: 1; }
-            100% { transform: translateY(-100vh) scale(0.8); opacity: 0; }
-        }
-
-        /* Confetti */
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: #ffeb3b;
-            animation: confettiFall 3s linear infinite;
-        }
-
-        @keyframes confettiFall {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
-        }
-
-        /* Signature */
-        .signature {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 1.4rem;
-            color: #ff80ab;
-            text-shadow: 0 0 10px #ff4081;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from { text-shadow: 0 0 10px #ff4081; }
-            to { text-shadow: 0 0 25px #ff80ab; }
-        }
-    </style>
+  @keyframes fall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+  }
+</style>
 </head>
 <body>
 
-    <!-- Waves -->
-    <div class="wave"></div>
-    <div class="wave"></div>
-    <div class="wave"></div>
+<h1>🎉 مبارک ہو، خوبصورت رانی! 🎉</h1>
 
-    <!-- Urdu Message -->
-    <div class="urdu-text">
-        ہیے گلاب جامن! 504 لینے والے بڑے لوگ 😁  
-        پھر بھی پتہ نہیں کیوں عجیب سی اداسی لگ رہی ہے،  
-        دل کرتا ہے اتنا ماروں تمہیں کہ دوبارہ کبھی ایسی بات نہ سوچو 😤  
-        خیر، اس وقت چار بج رہے ہیں اور مجھے بہت سخت نیند آ رہی ہے 😫😭  
-        لیکن تمہیں یہ بھیجنا ضروری تھا 💌  
-        میری محنت کی قدر کیا کرو جی!  
-        خیر، اب میں اپنے رونے لے کر بیٹھ گیا ہوں 😅  
-        مبارک ہو 504 نمبروں پر! 😔🥳  
-        اب تو آپ انٹیلیجنٹ پیپس بن گئے ہو،  
-        میں کہاں جا کر منہ لگاؤں ہینا 🤭  
-        چلو آؤ گھومی گھومی کرنے چلیں 🥹  
-    </div>
+<div class="content">
+  <p>
+    آج صرف تمہارا نتیجہ آنے کا دن نہیں، بلکہ وہ دن ہے جب دنیا نے دیکھا کہ خوبصورتی اور عقل جب ایک ساتھ چلیں تو کیا کمال ہوتا ہے۔  
+    تم نے صرف <b>504 نمبر</b> نہیں لیے، بلکہ یہ ثابت کیا کہ خوداعتمادی، محنت، اور نرمی ایک ہی دل میں جگہ بنا سکتے ہیں۔ 🌟
+  </p>
+  <p>
+    تم ہمیشہ وہ شخصیت رہی ہو جو بنا کسی کوشش کے چمکتی ہے — جیسے سمندر کی لہریں سورج کی روشنی میں دمکتی ہیں۔  
+    تمہاری شخصیت مضبوط، باوقار، اور ناقابلِ شکست ہے۔  
+    سب جانتے تھے تم کامیاب ہوگی، مگر تم نے وہ بھی انداز میں کیا کہ آج ستارے بھی تمہارے لیے تالیاں بجا رہے ہیں! ✨💫
+  </p>
+  <p>
+    یہ صفحہ صرف تمہاری ایک چھوٹی سی خوشی منانے کی کوشش ہے — تمہاری ہنسی، تمہاری کشش، تمہاری لگن،  
+    اور وہ جادو جو تمہیں تم بناتا ہے۔ 💖  
+    ہمیشہ اسی طرح چمکتی رہو، کیونکہ دنیا تب ہی حسین لگتی ہے جب تم یوں مسکراتی ہو۔ 😍
+  </p>
+</div>
 
-    <!-- Signature -->
-    <div class="signature">From: Saad ka Gulab Jamun 💞</div>
+<div class="stickers">👏💃🎊</div>
 
-    <script>
-        // Floating Bubbles
-        function createBubbles() {
-            const body = document.body;
-            setInterval(() => {
-                const bubble = document.createElement('div');
-                bubble.className = 'bubble';
-                const size = Math.random() * 30 + 10;
-                bubble.style.width = `${size}px`;
-                bubble.style.height = `${size}px`;
-                bubble.style.left = `${Math.random() * 100}vw`;
-                bubble.style.animationDuration = `${Math.random() * 6 + 5}s`;
-                body.appendChild(bubble);
-                setTimeout(() => bubble.remove(), 12000);
-            }, 400);
-        }
-
-        // Floating Hearts
-        function createHearts() {
-            const body = document.body;
-            const hearts = ['💖', '✨', '🌸', '💞'];
-            setInterval(() => {
-                const heart = document.createElement('div');
-                heart.className = 'heart';
-                heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
-                heart.style.left = `${Math.random() * 100}vw`;
-                heart.style.animationDuration = `${Math.random() * 4 + 3}s`;
-                body.appendChild(heart);
-                setTimeout(() => heart.remove(), 7000);
-            }, 600);
-        }
-
-        // Confetti
-        function createConfetti() {
-            const body = document.body;
-            const colors = ['#ff4081', '#ffeb3b', '#00e5ff', '#69f0ae', '#ffab40'];
-            setInterval(() => {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.left = `${Math.random() * 100}vw`;
-                confetti.style.animationDuration = `${Math.random() * 3 + 2}s`;
-                confetti.style.width = `${Math.random() * 8 + 4}px`;
-                confetti.style.height = `${Math.random() * 8 + 4}px`;
-                body.appendChild(confetti);
-                setTimeout(() => confetti.remove(), 4000);
-            }, 200);
-        }
-
-        // Initialize All
-        window.onload = function() {
-            createBubbles();
-            createHearts();
-            createConfetti();
-        };
-    </script>
+<!-- Confetti Script -->
+<script>
+  for (let i = 0; i < 80; i++) {
+    let confetti = document.createElement('div');
+    confetti.classList.add('confetti');
+    confetti.style.right = Math.random() * 100 + 'vw';
+    confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 60%)`;
+    confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+    document.body.appendChild(confetti);
+  }
+</script>
 
 </body>
 </html>
