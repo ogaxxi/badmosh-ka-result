@@ -1,351 +1,213 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ur" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Congratulations on Your Amazing Results!</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(to bottom, #1a2980, #26d0ce);
-            color: white;
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-        }
-        
-        .ocean-container {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            text-align: center;
-        }
-        
-        .wave {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%230099ff" fill-opacity="0.3" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-            background-size: cover;
-            animation: wave 10s linear infinite;
-        }
-        
-        .wave:nth-child(2) {
-            bottom: 10px;
-            animation: wave 15s linear infinite;
-            opacity: 0.5;
-        }
-        
-        .wave:nth-child(3) {
-            bottom: 15px;
-            animation: wave 20s linear infinite;
-            opacity: 0.2;
-        }
-        
-        @keyframes wave {
-            0% {
-                background-position-x: 0;
-            }
-            100% {
-                background-position-x: 1440px;
-            }
-        }
-        
-        .congrats-card {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 800px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            z-index: 10;
-            position: relative;
-            margin-top: 50px;
-        }
-        
-        h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        
-        .score {
-            font-size: 5rem;
-            font-weight: bold;
-            color: #ffeb3b;
-            text-shadow: 0 0 10px rgba(255, 235, 59, 0.7);
-            margin: 20px 0;
-        }
-        
-        .message {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin: 30px 0;
-            text-align: left;
-        }
-        
-        .ocean-stickers {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-        }
-        
-        .sticker {
-            position: absolute;
-            width: 80px;
-            height: 80px;
-            opacity: 0.7;
-        }
-        
-        .clapping-hands {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            font-size: 4rem;
-            animation: clap 1s infinite alternate;
-            z-index: 100;
-        }
-        
-        @keyframes clap {
-            0% {
-                transform: scale(1);
-            }
-            100% {
-                transform: scale(1.2);
-            }
-        }
-        
-        .confetti {
-            position: absolute;
-            width: 15px;
-            height: 15px;
-            background-color: #f00;
-            opacity: 0.8;
-            top: -20px;
-            animation: fall linear forwards;
-        }
-        
-        @keyframes fall {
-            to {
-                transform: translateY(100vh) rotate(360deg);
-            }
-        }
-        
-        .bubble {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            animation: float linear infinite;
-        }
-        
-        @keyframes float {
-            0% {
-                transform: translateY(0) translateX(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) translateX(20px);
-                opacity: 0;
-            }
-        }
-        
-        .celebrate-btn {
-            background: #ff4081;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            border-radius: 50px;
-            cursor: pointer;
-            margin-top: 20px;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .celebrate-btn:hover {
-            background: #e91e63;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-        
-        .fish {
-            position: absolute;
-            font-size: 2rem;
-            animation: swim linear infinite;
-        }
-        
-        @keyframes swim {
-            0% {
-                transform: translateX(-100px);
-            }
-            100% {
-                transform: translateX(calc(100vw + 100px));
-            }
-        }
-        
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            .score {
-                font-size: 4rem;
-            }
-            
-            .congrats-card {
-                padding: 20px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مبارک ہو! آپ کی شاندار کامیابی</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Noto Nastaliq Urdu', serif;
+    }
+
+    body {
+        background: linear-gradient(120deg, #0077b6, #00b4d8, #90e0ef);
+        background-size: 400% 400%;
+        animation: oceanFlow 15s ease infinite;
+        color: #fff;
+        overflow-x: hidden;
+        min-height: 100vh;
+        position: relative;
+    }
+
+    @keyframes oceanFlow {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .ocean-container {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+    }
+
+    .wave {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 200%;
+        height: 100px;
+        background: rgba(255,255,255,0.2);
+        border-radius: 100%;
+        animation: wave 10s linear infinite;
+    }
+
+    .wave:nth-child(2) { animation-duration: 14s; opacity: 0.5; bottom: 20px; }
+    .wave:nth-child(3) { animation-duration: 20s; opacity: 0.3; bottom: 35px; }
+
+    @keyframes wave {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+    }
+
+    .congrats-card {
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 25px;
+        padding: 40px;
+        max-width: 800px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        animation: fadeInUp 1.5s ease both;
+    }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+        text-shadow: 0 0 10px rgba(255,255,255,0.4);
+        animation: popIn 2s ease;
+    }
+
+    .nickname {
+        font-size: 1.8rem;
+        color: #ffeb3b;
+        text-shadow: 0 0 10px #ffeb3b, 0 0 15px #fff59d;
+        margin-bottom: 25px;
+    }
+
+    .score {
+        font-size: 4.5rem;
+        font-weight: bold;
+        color: #ffee58;
+        text-shadow: 0 0 15px #ffeb3b, 0 0 25px #fff59d;
+        margin: 20px 0;
+        animation: glowPulse 2s infinite alternate;
+    }
+
+    @keyframes glowPulse {
+        from { text-shadow: 0 0 10px #ffee58; }
+        to { text-shadow: 0 0 30px #fff176, 0 0 50px #fff59d; }
+    }
+
+    .message {
+        font-size: 1.3rem;
+        line-height: 2.3rem;
+        margin: 30px 0;
+        text-align: right;
+        color: #e3f2fd;
+    }
+
+    .celebrate-btn {
+        background: linear-gradient(90deg, #ff6f61, #f50057);
+        color: white;
+        border: none;
+        padding: 14px 32px;
+        font-size: 1.1rem;
+        border-radius: 50px;
+        cursor: pointer;
+        margin-top: 20px;
+        box-shadow: 0 0 20px rgba(255, 105, 135, 0.4);
+        transition: all 0.3s ease;
+    }
+
+    .celebrate-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 25px rgba(255, 105, 135, 0.6);
+    }
+
+    .clapping-hands {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        font-size: 3.5rem;
+        animation: clap 1s infinite alternate;
+        z-index: 10;
+    }
+
+    @keyframes clap {
+        from { transform: scale(1); }
+        to { transform: scale(1.3) rotate(10deg); }
+    }
+
+    .floating-emoji {
+        position: absolute;
+        font-size: 2rem;
+        opacity: 0.8;
+        animation: floaty 8s linear infinite;
+    }
+
+    @keyframes floaty {
+        from { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+        to { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
+
+    @media (max-width: 768px) {
+        h1 { font-size: 2.4rem; }
+        .score { font-size: 3.5rem; }
+        .congrats-card { padding: 25px; }
+    }
+</style>
 </head>
 <body>
-    <div class="ocean-container">
-        <!-- Ocean waves -->
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-        
-        <!-- Ocean stickers -->
-        <div class="ocean-stickers" id="oceanStickers"></div>
-        
-        <!-- Clapping hands -->
-        <div class="clapping-hands">👏</div>
-        
-        <!-- Main content -->
-        <div class="congrats-card">
-            <h1>Congratulations!</h1>
-            <div class="score">504 Marks</div>
-            <p class="message">
-                Your incredible achievement of 504 marks is a testament to your hard work, dedication, and brilliance. 
-                Just like the vast and beautiful ocean, your potential knows no bounds. 
-                You've navigated through challenges with grace and emerged victorious. 
-                This is just the beginning of your amazing journey, and I'm so proud of everything you've accomplished. 
-                Your intelligence shines as brightly as the sun reflecting on the ocean's surface, and your future is as limitless as the horizon.
-            </p>
-            <p class="message">
-                You are not just smart and beautiful, but also resilient and determined. 
-                Celebrate this momentous achievement - you've earned it!
-            </p>
-            <button class="celebrate-btn" onclick="createConfetti()">Celebrate Again!</button>
-        </div>
-    </div>
+<div class="ocean-container">
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
 
-    <script>
-        // Create ocean stickers (fish, shells, etc.)
-        function createOceanStickers() {
-            const oceanStickers = document.getElementById('oceanStickers');
-            const stickers = ['🐠', '🐟', '🐡', '🦀', '🐚', '🐬', '🦈', '🐋', '🌊', '💎'];
-            
-            for (let i = 0; i < 15; i++) {
-                const sticker = document.createElement('div');
-                sticker.className = 'sticker';
-                sticker.innerHTML = stickers[Math.floor(Math.random() * stickers.length)];
-                sticker.style.left = Math.random() * 100 + 'vw';
-                sticker.style.top = Math.random() * 100 + 'vh';
-                sticker.style.fontSize = (Math.random() * 40 + 30) + 'px';
-                sticker.style.animationDuration = (Math.random() * 20 + 10) + 's';
-                sticker.style.animationDelay = (Math.random() * 5) + 's';
-                
-                oceanStickers.appendChild(sticker);
-            }
-        }
-        
-        // Create bubbles
-        function createBubbles() {
-            const body = document.querySelector('body');
-            
-            setInterval(() => {
-                const bubble = document.createElement('div');
-                bubble.className = 'bubble';
-                const size = Math.random() * 30 + 10;
-                bubble.style.width = size + 'px';
-                bubble.style.height = size + 'px';
-                bubble.style.left = Math.random() * 100 + 'vw';
-                bubble.style.animationDuration = (Math.random() * 10 + 5) + 's';
-                bubble.style.animationDelay = (Math.random() * 2) + 's';
-                
-                body.appendChild(bubble);
-                
-                // Remove bubble after animation completes
-                setTimeout(() => {
-                    bubble.remove();
-                }, 15000);
-            }, 300);
-        }
-        
-        // Create fish
-        function createFish() {
-            const body = document.querySelector('body');
-            const fishEmojis = ['🐠', '🐟', '🐡', '🐬'];
-            
-            setInterval(() => {
-                const fish = document.createElement('div');
-                fish.className = 'fish';
-                fish.innerHTML = fishEmojis[Math.floor(Math.random() * fishEmojis.length)];
-                fish.style.top = Math.random() * 80 + 10 + 'vh';
-                fish.style.animationDuration = (Math.random() * 20 + 10) + 's';
-                fish.style.fontSize = (Math.random() * 20 + 20) + 'px';
-                
-                body.appendChild(fish);
-                
-                // Remove fish after animation completes
-                setTimeout(() => {
-                    fish.remove();
-                }, 30000);
-            }, 2000);
-        }
-        
-        // Create confetti
-        function createConfetti() {
-            const body = document.querySelector('body');
-            const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
-            
-            for (let i = 0; i < 100; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = Math.random() * 100 + 'vw';
-                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                confetti.style.width = (Math.random() * 10 + 5) + 'px';
-                confetti.style.height = (Math.random() * 10 + 5) + 'px';
-                
-                body.appendChild(confetti);
-                
-                // Remove confetti after animation completes
-                setTimeout(() => {
-                    confetti.remove();
-                }, 5000);
-            }
-        }
-        
-        // Initialize everything when page loads
-        window.onload = function() {
-            createOceanStickers();
-            createBubbles();
-            createFish();
-            createConfetti();
-        };
-    </script>
+    <div class="clapping-hands">👏</div>
+
+    <div class="congrats-card">
+        <h1>دل کی گہرائیوں سے مبارک ہو!</h1>
+        <div class="nickname">سعد کا گلاب جامن 🌸</div>
+        <div class="score">504 نمبر</div>
+
+        <p class="message">
+            تمہاری یہ شاندار کامیابی تمہاری محنت، لگن اور عقل مندی کی عکاسی کرتی ہے۔  
+            جیسے سمندر کی لہریں کبھی نہیں رکتیں، ویسے ہی تم نے بھی ہر مشکل کو اپنے حوصلے سے مات دی۔  
+            تمہاری یہ کامیابی ایک خوبصورت آغاز ہے ایک روشن مستقبل کا۔ 🌊✨  
+        </p>
+
+        <p class="message">
+            تم صرف خوبصورت نہیں بلکہ باہمت، سمجھدار اور دلکش بھی ہو۔  
+            آج کا دن تمہاری خوشی کا دن ہے — کیونکہ تم نے یہ مقام اپنی محنت سے حاصل کیا ہے۔  
+            اللہ تمہیں ہمیشہ کامیاب رکھے اور تمہاری ہر خواہش پوری کرے۔ 💖🌸  
+        </p>
+
+        <button class="celebrate-btn" onclick="celebrate()">دوبارہ جشن منائیں 🎉</button>
+    </div>
+</div>
+
+<script>
+function celebrate() {
+    for (let i = 0; i < 30; i++) {
+        const emoji = document.createElement('div');
+        emoji.className = 'floating-emoji';
+        emoji.innerText = ['🎉', '✨', '💖', '🎊', '🌊'][Math.floor(Math.random() * 5)];
+        emoji.style.left = Math.random() * 100 + 'vw';
+        emoji.style.fontSize = (Math.random() * 20 + 20) + 'px';
+        emoji.style.animationDuration = (Math.random() * 4 + 5) + 's';
+        document.body.appendChild(emoji);
+        setTimeout(() => emoji.remove(), 9000);
+    }
+}
+window.onload = celebrate;
+</script>
 </body>
 </html>
